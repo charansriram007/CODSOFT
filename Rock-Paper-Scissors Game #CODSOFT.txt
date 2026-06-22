@@ -1,0 +1,78 @@
+import random
+
+player_score = 0
+computer_score = 0
+ties = 0
+
+print("=" * 50)
+print("     ROCK PAPER SCISSORS - ENDLESS MODE")
+print("=" * 50)
+print("Type 'q' anytime to quit the game.\n")
+
+while True:
+
+    print("\nChoose your move:")
+    print("1 - Rock")
+    print("2 - Paper")
+    print("3 - Scissors")
+    print("Q - Quit")
+
+    choice = input("\nYour choice: ").lower().strip()
+
+    if choice == "q":
+        break
+
+    if choice == "1":
+        user = "rock"
+    elif choice == "2":
+        user = "paper"
+    elif choice == "3":
+        user = "scissors"
+    else:
+        print("❌ Invalid choice! Please enter 1, 2, 3, or Q.")
+        continue
+
+    computer = random.choice(["rock", "paper", "scissors"])
+
+    print(f"\n👤 You chose      : {user.capitalize()}")
+    print(f"💻 Computer chose : {computer.capitalize()}")
+
+    if user == computer:
+        ties += 1
+        print("🤝 It's a Tie!")
+
+    elif (
+        (user == "rock" and computer == "scissors") or
+        (user == "paper" and computer == "rock") or
+        (user == "scissors" and computer == "paper")
+    ):
+        player_score += 1
+        print("🏆 You Win!")
+
+    else:
+        computer_score += 1
+        print("💀 Computer Wins!")
+
+    print("\n📊 SCOREBOARD")
+    print("-" * 30)
+    print(f"👤 Player Wins   : {player_score}")
+    print(f"💻 Computer Wins : {computer_score}")
+    print(f"🤝 Ties          : {ties}")
+    print("-" * 30)
+
+print("\n" + "=" * 50)
+print("           FINAL RESULTS")
+print("=" * 50)
+
+print(f"👤 Player Wins   : {player_score}")
+print(f"💻 Computer Wins : {computer_score}")
+print(f"🤝 Ties          : {ties}")
+
+if player_score > computer_score:
+    print("\n🏆 Overall Winner: YOU")
+elif computer_score > player_score:
+    print("\n🏆 Overall Winner: COMPUTER")
+else:
+    print("\n🏆 Overall Result: DRAW")
+
+print("\nThanks for playing!")
